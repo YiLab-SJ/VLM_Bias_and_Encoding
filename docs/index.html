@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demographic Bias and Encoding in Medical Vision-Language Models</title>
+  <meta name="description" content="Demographic Bias and Encoding in Medical Vision-Language Models: an evaluation of eight medical VLMs for demographic encoding and underdiagnosis bias across MIMIC-CXR, CheXpert, and ReXGradient-160K.">
+  <meta property="og:title" content="Demographic Bias and Encoding in Medical Vision-Language Models">
+  <meta property="og:description" content="Eight medical VLMs evaluated for demographic encoding and underdiagnosis bias across >700,000 chest x-rays.">
+  <meta property="og:image" content="static/images/figure1.png">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+</head>
+<body>
+
+<section class="hero publication">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="title is-2 publication-title">
+        Demographic Bias and Encoding in Medical Vision-Language Models
+      </h1>
+
+      <div class="author-block">
+        Ammar Ahmed Pallikonda Latheef, MSE&nbsp;·&nbsp;
+        Paravreet Woodwal, DDS, MPH&nbsp;·&nbsp;
+        Aditya Kulkarni, MSE&nbsp;·&nbsp;
+        Jacob M Luber, PhD&nbsp;·&nbsp;
+        Pritam Mukherjee, PhD*&nbsp;·&nbsp;
+        Paul H. Yi, MD*,†
+      </div>
+      <div class="affiliation">St. Jude Children's Research Hospital, Memphis, Tennessee, United States</div>
+      <div class="author-note">*Co-Senior Authors &nbsp;·&nbsp; †Corresponding Author</div>
+
+      <div class="publication-links mt-5">
+        <a class="button is-rounded is-dark" href="https://github.com/YiLab-SJ/VLM_Bias_and_Encoding" target="_blank" rel="noopener">
+          <span class="icon"><i class="fa-brands fa-github"></i></span>
+          <span>Code</span>
+        </a>
+        <span class="button is-rounded" disabled>
+          <span class="icon"><i class="fa-solid fa-file-lines"></i></span>
+          <span>Paper (Under Review)</span>
+        </span>
+        <a class="button is-rounded is-dark" href="mailto:paul.yi@stjude.org">
+          <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+          <span>Contact</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pt-0">
+  <div class="container is-max-desktop">
+    <div class="figure-block has-text-centered">
+      <img src="static/images/figure1.png" alt="Study overview" style="max-width:100%; height:auto;">
+      <p class="figure-caption">
+        <strong>Figure 1. Overview of the study design.</strong>
+        A: Eight medical vision–language models (four CXR-specific and four generalist medical VLMs) were evaluated
+        using chest x-rays and corresponding report impressions from MIMIC-CXR, CheXpert, and ReXGradient-160K. For
+        each model, representations were extracted separately from the vision encoder and text encoder across layers.
+        Linear probes were trained on each layer to quantify demographic encoding for sex, age, and race using AUROC,
+        and to measure underdiagnosis rate for "No Finding" using false-positive rate (FPR).
+        B: Analysis framework. Demographic encoding was assessed as the extent to which demographic attributes were
+        recoverable from model representations, while underdiagnosis disparity was measured as the "No Finding" FPR
+        gap between demographic groups. Layer-level encoding trajectories were related to layer-wise underdiagnosis
+        disparity using linear mixed modeling.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section pt-0">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4">Abstract</h2>
+    <div class="content">
+      <p>
+        Medical vision-language models (VLMs) have demonstrated expert-level performance for a range of tasks, but
+        they can exhibit demographic biases with worse performance in historically under-served groups. Furthermore,
+        the contributions of vision vs. text encoders to such biases remain unclear. We evaluated eight state-of-the-art
+        medical VLMs for demographic encoding and underdiagnosis bias for chest x-ray (CXR) classification on
+        &gt;700,000 CXRs from MIMIC-CXR, CheXpert, and ReXGradient-160K; these models included four CXR-specific
+        models (CheXagent, CheXzero, NV-Reason-CXR, and BioViL-T) and four generalist models (MedGemma 1.5, RadFM,
+        LLaVA-Med 1.5, and MedVersa). Across all models and datasets, underdiagnosis disparity was consistently larger
+        in vision embeddings than in text embeddings, with age producing the largest gaps. Demographic encoding was
+        also strongest in vision embeddings, with sex most strongly encoded. Vision encoding of age was significantly
+        associated with underdiagnosis biases, suggesting a link between demographic encoding and downstream diagnostic
+        biases. Although VLMs have been lauded for their generalist capabilities in medicine without relying on
+        annotated training data, the potential for demographic encoding and downstream biases in these models could
+        exacerbate existing health disparities and raise ethical concerns that must be addressed to ensure safe and
+        equitable use of these models in clinical care.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section pt-0">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4">Underdiagnosis disparity is concentrated in vision embeddings</h2>
+    <div class="figure-block has-text-centered">
+      <img src="static/images/figure2.png" alt="Underdiagnosis disparity across datasets, modalities, attributes, and models" style="max-width:100%; height:auto;">
+      <p class="figure-caption">
+        <strong>Figure 2. Underdiagnosis disparity across datasets, model pathways, demographic attributes, and models.</strong>
+        A: Mean ± SEM underdiagnosis disparity across eight models, stratified by dataset, modality, and demographic
+        contrast (n = 8 models). Underdiagnosis disparity is defined as the absolute No Finding FPR gap between
+        demographic subgroups. B: MIMIC-CXR vision-embedding radar chart showing final-layer per-model underdiagnosis
+        disparity for age, race, and sex. C: MIMIC-CXR text-embedding radar chart showing final-layer per-model
+        underdiagnosis disparity for age, race, and sex. Radar spokes correspond to models; the shaded half indicates
+        CXR-specific models, and the unshaded half indicates generalist medical models.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section pt-0">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4">Demographic information is encoded most strongly in vision embeddings</h2>
+    <div class="figure-block has-text-centered">
+      <img src="static/images/figure3.png" alt="Demographic encoding across datasets, modalities, attributes, models, and vision-layer depth" style="max-width:100%; height:auto;">
+      <p class="figure-caption">
+        <strong>Figure 3. Demographic encoding across datasets, model pathways, demographic attributes, models, and vision-layer depth.</strong>
+        A: Mean ± SEM demographic encoding AUC across eight models, stratified by dataset, modality, and demographic
+        contrast. B: MIMIC-CXR vision-embedding radar chart of final-layer per-model demographic encoding AUC for age,
+        race, and sex. C: MIMIC-CXR text-embedding radar chart of final-layer per-model demographic encoding AUC for
+        age, race, and sex. D: Normalized vision-layer encoding AUC trajectories — each model's vision-layer sequence
+        was interpolated to a common normalized depth scale (0.00–1.00), with curves showing the mean AUC across
+        models and shaded bands indicating ± SEM.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section pt-0">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4">Age encoding is nonlinearly associated with underdiagnosis disparity</h2>
+    <div class="figure-block has-text-centered">
+      <img src="static/images/figure4.png" alt="Linear mixed model analysis of age encoding and underdiagnosis disparity" style="max-width:70%; height:auto;">
+      <p class="figure-caption">
+        <strong>Figure 4. Linear mixed model analysis of age encoding and underdiagnosis disparity across vision-encoder layers.</strong>
+        A: MIMIC-CXR. B: ReXGradient-160K. C: CheXpert. The x-axis shows age encoding AUC (ability of a linear probe
+        to distinguish patients aged 80+ from patients aged 18–39). The y-axis shows underdiagnosis disparity, defined
+        as the No Finding FPR gap between the same age groups. Gray points are layer-level observations from the eight
+        VLMs; curves show fitted quadratic relationships at early, middle, and late relative layer depths. Filled
+        points with 95% CI error bars show estimated marginal means at low, median, and high age encoding levels
+        (10th/50th/90th percentiles). Asterisks indicate statistically significant pairwise contrasts.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section pt-0">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4">Supplementary figures</h2>
+    <div class="columns is-multiline supp-grid">
+      <div class="column is-6 has-text-centered">
+        <img src="static/images/s1.png" alt="Supplementary Figure S1" style="max-width:100%; height:auto;">
+        <p class="figure-caption"><strong>Figure S1.</strong> A: Underdiagnosis disparity (No Finding FPR gaps), and
+          B: demographic encoding AUCs, for ReXGradient-160K and CheXpert, across all 8 models' final embeddings,
+          for both vision and text modules.</p>
+      </div>
+      <div class="column is-6 has-text-centered">
+        <img src="static/images/s2.png" alt="Supplementary Figure S2" style="max-width:100%; height:auto;">
+        <p class="figure-caption"><strong>Figure S2.</strong> AUC scores for sex, age, and race across all layers on
+          MIMIC-CXR. Subplots represent each of the 8 models' A) vision and B) text encoders.</p>
+      </div>
+      <div class="column is-6 has-text-centered">
+        <img src="static/images/s3.png" alt="Supplementary Figure S3" style="max-width:100%; height:auto;">
+        <p class="figure-caption"><strong>Figure S3.</strong> AUC scores for sex, age, and race across all layers on
+          CheXpert. Subplots represent each of the 8 models' A) vision and B) text encoders.</p>
+      </div>
+      <div class="column is-6 has-text-centered">
+        <img src="static/images/s4.png" alt="Supplementary Figure S4" style="max-width:100%; height:auto;">
+        <p class="figure-caption"><strong>Figure S4.</strong> AUC scores for sex and age across all layers on
+          ReXGradient-160K. Subplots represent each of the 8 models' A) vision and B) text encoders.</p>
+      </div>
+      <div class="column is-6 is-offset-3 has-text-centered">
+        <img src="static/images/s5.png" alt="Supplementary Figure S5" style="max-width:100%; height:auto;">
+        <p class="figure-caption"><strong>Figure S5.</strong> Linear mixed model for the relation between demographic
+          encoding and No Finding underdiagnosis disparity for sex and race. A, B, C: MIMIC-CXR, CheXpert, and
+          ReXGradient-160K, respectively. ReXGradient-160K has no race plot due to lack of race metadata.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section pt-0">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4">BibTeX</h2>
+    <pre class="bibtex">@article{pallikondalatheef2026demographic,
+  title   = {Demographic Bias and Encoding in Medical Vision-Language Models},
+  author  = {Pallikonda Latheef, Ammar Ahmed and Woodwal, Paravreet and Kulkarni, Aditya
+             and Luber, Jacob M and Mukherjee, Pritam and Yi, Paul H},
+  journal = {Manuscript under review},
+  year    = {2026}
+}</pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container is-max-desktop has-text-centered">
+    <p>Code and data-access instructions: <a href="https://github.com/YiLab-SJ/VLM_Bias_and_Encoding" target="_blank" rel="noopener">github.com/YiLab-SJ/VLM_Bias_and_Encoding</a></p>
+    <p>© 2026 St. Jude Children's Research Hospital.</p>
+  </div>
+</footer>
+
+</body>
+</html>

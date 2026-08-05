@@ -1,0 +1,82 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+  color: #222;
+}
+
+.title, .subtitle {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+}
+
+.hero.publication {
+  background: linear-gradient(180deg, #f5f7fb 0%, #ffffff 100%);
+}
+
+.publication-title {
+  font-weight: 700;
+}
+
+.author-block {
+  font-size: 1.1rem;
+}
+
+.author-note {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.affiliation {
+  font-size: 1rem;
+  color: #444;
+  margin-top: 0.25rem;
+}
+
+.publication-links .button {
+  margin: 0.25rem;
+}
+
+.figure-block {
+  margin-bottom: 3rem;
+}
+
+.figure-block img {
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  padding: 0.5rem;
+  background: #fff;
+}
+
+.figure-caption {
+  font-size: 0.95rem;
+  color: #333;
+  margin-top: 0.75rem;
+  text-align: left;
+}
+
+.figure-caption strong {
+  color: #111;
+}
+
+.supp-grid img {
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  padding: 0.35rem;
+  background: #fff;
+}
+
+.section-divider {
+  margin: 3rem 0;
+}
+
+pre.bibtex {
+  background: #f5f5f5;
+  border-radius: 6px;
+  padding: 1.25rem;
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+
+footer.footer {
+  background: #fafafa;
+  color: #666;
+  font-size: 0.9rem;
+}
