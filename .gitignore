@@ -1,0 +1,28 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+venv/
+env/
+*.egg-info/
+
+# OS / editor
+.DS_Store
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Data / weights (never commit)
+*.csv
+*.pth
+*.pt
+*.safetensors
+*.bin
+*.ckpt
+*.h5
+*.npz
+*.npy
