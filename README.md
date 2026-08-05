@@ -46,17 +46,24 @@ No raw images, reports, metadata CSVs, or model weights are included in this rep
 Demographic/disease labels were derived using the CheXpert-style NLP labeler. Analyses were
 restricted to adult patients (age ≥ 18).
 
-**Age-code convention used in our probes:**
+### Obtaining the data
 
-| Dataset | Code 0 | Code 1 | Code 2 | Code 3 | Code 4 |
-|---|---|---|---|---|---|
-| MIMIC-CXR / CheXpert | 80+ | 60–79 | 40–59 | 18–39 | — |
-| ReXGradient-160K | 0–17 | 18–39 | 40–59 | 60–79 | 80+ |
+**MIMIC-CXR:** Request [PhysioNet access](https://mimic-cxr.mit.edu/about/access/) and
+download [MIMIC-CXR-JPG 2.0.0](https://physionet.org/content/mimic-cxr-jpg/2.0.0/) (the GCP
+bucket via `gsutil rsync` is the fastest route). Demographic fields (sex, age) come from
+[MIMIC-IV](https://physionet.org/content/mimiciv/)'s `core/patients.csv.gz` and
+`core/admissions.csv.gz`, which require separate PhysioNet credentialing and should be placed
+alongside the MIMIC-CXR-JPG data.
 
-MIMIC-CXR/CheXpert age codes are in **descending** order; ReXGradient-160K is **ascending**.
-The primary age contrast used throughout is 80+ vs. 18–39.
+**CheXpert:** Download the [downsampled CheXpert-v1.0-small
+dataset](http://download.cs.stanford.edu/deep/CheXpert-v1.0-small.zip). Demographic metadata
+(`CHEXPERT DEMO.xlsx`) requires a separate Stanford AIMI registration and
+[download](https://stanfordaimi.azurewebsites.net/datasets/192ada7c-4d43-466e-b8bb-b81992bb80cf).
+
+**ReXGradient-160K:** TBD.
 
 ## Repository structure
+
 
 ```
 extraction/                  Layer-wise vision/text embedding extraction (frozen models)
