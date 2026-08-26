@@ -18,14 +18,14 @@ MIMIC-CXR, CheXpert, and ReXGradient-160K.
 
 | Model | Type | Source |
 |---|---|---|
-| CheXzero | CXR-specific | Tiu et al., *Nat. Biomed. Eng.* 2022 |
+| CheXzero | CXR-specific | [rajpurkarlab/CheXzero](https://github.com/rajpurkarlab/CheXzero) |
 | CheXagent | CXR-specific | [Stanford-AIMI/CheXagent](https://github.com/Stanford-AIMI/CheXagent) |
 | NV-Reason-CXR | CXR-specific | [NVIDIA-Medtech/NV-Reason-CXR](https://github.com/NVIDIA-Medtech/NV-Reason-CXR) |
-| BioViL-T | CXR-specific | Bannur et al., CVPR 2023 (Microsoft `hi-ml`/`health_multimodal`) |
-| MedGemma 1.5 | Generalist | Sellergren et al., 2026 (Google) |
+| BioViL-T | CXR-specific | [microsoft/BiomedVLP-BioViL-T](https://huggingface.co/microsoft/BiomedVLP-BioViL-T) |
+| MedGemma 1.5 | Generalist | [google/medgemma-1.5-4b-it](https://huggingface.co/google/medgemma-1.5-4b-it) |
 | RadFM | Generalist | [chaoyi-wu/RadFM](https://github.com/chaoyi-wu/RadFM) |
 | LLaVA-Med 1.5 | Generalist | [microsoft/LLaVA-Med](https://github.com/microsoft/LLaVA-Med) |
-| MedVersa | Generalist | Zhou et al., *NEJM AI* 2026 |
+| MedVersa | Generalist | [hyzhou/MedVersa](https://huggingface.co/hyzhou/MedVersa) |
 
 This repository does **not** vendor any of the above model repositories or their weights.
 To reproduce feature extraction, clone/download each model from its official source above
@@ -157,8 +157,22 @@ official upstream repository on `sys.path` (see `config_*.py` / extraction scrip
 expected local paths). Probe training/evaluation additionally require `scikit-learn`,
 `pandas`, `numpy`, and `joblib`. The LMM analysis (`analysis/linear_mixed_model_analysis.py`)
 requires R with the `nlme`, `emmeans`, and `mgcv` packages, accessed from Python via `rpy2`.
-We recommend a separate conda environment per model, following that model's own
-installation instructions, plus one shared environment for probing/evaluation/analysis.
+The extraction environments used for this study are captured separately for reproducibility:
+
+| Model | Conda environment | Pip requirements |
+|---|---|---|
+| CheXzero | `embeddings` | [requirements/chexzero.txt](requirements/chexzero.txt) |
+| BioViL-T | `monai_cxr` | [requirements/biovilt.txt](requirements/biovilt.txt) |
+| RadFM | `radfm_env` | [requirements/radfm.txt](requirements/radfm.txt) |
+| LLaVA-Med 1.5 | `llava-med` | [requirements/llavamed1p5.txt](requirements/llavamed1p5.txt) |
+| NV-Reason-CXR | `nvreason_env` | [requirements/nv_reason.txt](requirements/nv_reason.txt) |
+| CheXagent | `chexagent` | [requirements/chexagent.txt](requirements/chexagent.txt) |
+| MedVersa | `medversa_env` | [requirements/medversa.txt](requirements/medversa.txt) |
+| MedGemma 1.5 | `medgemma1p5` | [requirements/medgemma_1p5.txt](requirements/medgemma_1p5.txt) |
+
+Create a fresh environment and install the corresponding snapshot with
+`pip install -r requirements/<model>.txt`. Model weights and any upstream repositories
+must still be obtained from the official sources above.
 
 ## License
 
