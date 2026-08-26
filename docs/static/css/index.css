@@ -1,6 +1,7 @@
 body {
   font-family: 'Noto Sans', sans-serif;
-  color: #222;
+  color: #20262e;
+  background: #fcfcfb;
 }
 
 .title, .subtitle {
@@ -8,11 +9,17 @@ body {
 }
 
 .hero.publication {
-  background: linear-gradient(180deg, #f5f7fb 0%, #ffffff 100%);
+  background:
+    linear-gradient(120deg, rgba(18, 92, 84, 0.08), transparent 48%),
+    linear-gradient(180deg, #f3f7f5 0%, #fcfcfb 100%);
+  border-top: 5px solid #125c54;
 }
 
 .publication-title {
   font-weight: 700;
+  line-height: 1.15;
+  max-width: 880px;
+  margin-inline: auto;
 }
 
 .author-block {
@@ -32,6 +39,7 @@ body {
 
 .publication-links .button {
   margin: 0.25rem;
+  border-radius: 4px;
 }
 
 .figure-block {
@@ -45,6 +53,21 @@ body {
   background: #fff;
 }
 
+.main-figure {
+  display: block;
+  width: min(100%, 720px);
+  height: auto;
+  margin-inline: auto;
+}
+
+.main-figure-wide {
+  width: min(100%, 800px);
+}
+
+.main-figure-portrait {
+  width: min(100%, 520px);
+}
+
 .figure-caption {
   font-size: 0.95rem;
   color: #333;
@@ -54,6 +77,56 @@ body {
 
 .figure-caption strong {
   color: #111;
+}
+
+.section-label {
+  margin-bottom: 0.5rem;
+  color: #b0442f;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.references-section {
+  background: #edf4f1;
+  border-block: 1px solid #dce8e3;
+}
+
+.reference-columns {
+  margin-top: 1.5rem;
+}
+
+.reference-columns .column:first-child {
+  border-right: 1px solid #ccddd6;
+}
+
+.reference-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #ccddd6;
+  color: #164f49;
+}
+
+.reference-link:hover {
+  color: #b0442f;
+}
+
+.reference-link span,
+.reference-link small {
+  display: block;
+}
+
+.reference-link small {
+  margin-top: 0.15rem;
+  color: #586862;
+}
+
+.reference-link i {
+  font-size: 0.8rem;
 }
 
 .supp-grid img {
@@ -76,7 +149,26 @@ pre.bibtex {
 }
 
 footer.footer {
-  background: #fafafa;
+  background: #f2f4f3;
   color: #666;
   font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .hero.publication .hero-body {
+    padding-inline: 1.25rem;
+  }
+
+  .publication-title {
+    font-size: 2rem !important;
+  }
+
+  .author-block {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .reference-columns .column:first-child {
+    border-right: 0;
+  }
 }

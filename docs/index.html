@@ -41,10 +41,6 @@
           <span class="icon"><i class="fa-brands fa-github"></i></span>
           <span>Code</span>
         </a>
-        <span class="button is-rounded" disabled>
-          <span class="icon"><i class="fa-solid fa-file-lines"></i></span>
-          <span>Paper (Under Review)</span>
-        </span>
         <a class="button is-rounded is-dark" href="mailto:paul.yi@stjude.org">
           <span class="icon"><i class="fa-solid fa-envelope"></i></span>
           <span>Contact</span>
@@ -57,7 +53,7 @@
 <section class="section pt-0">
   <div class="container is-max-desktop">
     <div class="figure-block has-text-centered">
-      <img src="static/images/figure1.png" alt="Study overview" style="max-width:100%; height:auto;">
+      <img class="main-figure main-figure-wide" src="static/images/figure1.png" alt="Study overview">
       <p class="figure-caption">
         <strong>Figure 1. Overview of the study design.</strong>
         A: Eight medical vision–language models (four CXR-specific and four generalist medical VLMs) were evaluated
@@ -102,9 +98,10 @@
 
 <section class="section pt-0">
   <div class="container is-max-desktop">
-    <h2 class="title is-4">Underdiagnosis disparity is concentrated in vision embeddings</h2>
+    <p class="section-label">Result 01</p>
+    <h2 class="title is-4">Underdiagnosis disparity is highly present in age</h2>
     <div class="figure-block has-text-centered">
-      <img src="static/images/figure2.png" alt="Underdiagnosis disparity across datasets, modalities, attributes, and models" style="max-width:100%; height:auto;">
+      <img class="main-figure" src="static/images/figure2.png" alt="Underdiagnosis disparity across datasets, modalities, attributes, and models">
       <p class="figure-caption">
         <strong>Figure 2. Underdiagnosis disparity across datasets, model pathways, demographic attributes, and models.</strong>
         A: Mean ± SEM underdiagnosis disparity across eight models, stratified by dataset, modality, and demographic
@@ -120,9 +117,10 @@
 
 <section class="section pt-0">
   <div class="container is-max-desktop">
+    <p class="section-label">Result 02</p>
     <h2 class="title is-4">Demographic information is encoded most strongly in vision embeddings</h2>
     <div class="figure-block has-text-centered">
-      <img src="static/images/figure3.png" alt="Demographic encoding across datasets, modalities, attributes, models, and vision-layer depth" style="max-width:100%; height:auto;">
+      <img class="main-figure" src="static/images/figure3.png" alt="Demographic encoding across datasets, modalities, attributes, models, and vision-layer depth">
       <p class="figure-caption">
         <strong>Figure 3. Demographic encoding across datasets, model pathways, demographic attributes, models, and vision-layer depth.</strong>
         A: Mean ± SEM demographic encoding AUC across eight models, stratified by dataset, modality, and demographic
@@ -138,9 +136,10 @@
 
 <section class="section pt-0">
   <div class="container is-max-desktop">
+    <p class="section-label">Result 03</p>
     <h2 class="title is-4">Age encoding is nonlinearly associated with underdiagnosis disparity</h2>
     <div class="figure-block has-text-centered">
-      <img src="static/images/figure4.png" alt="Linear mixed model analysis of age encoding and underdiagnosis disparity" style="max-width:70%; height:auto;">
+      <img class="main-figure main-figure-portrait" src="static/images/figure4.png" alt="Linear mixed model analysis of age encoding and underdiagnosis disparity">
       <p class="figure-caption">
         <strong>Figure 4. Linear mixed model analysis of age encoding and underdiagnosis disparity across vision-encoder layers.</strong>
         A: MIMIC-CXR. B: ReXGradient-160K. C: CheXpert. The x-axis shows age encoding AUC (ability of a linear probe
@@ -150,6 +149,41 @@
         points with 95% CI error bars show estimated marginal means at low, median, and high age encoding levels
         (10th/50th/90th percentiles). Asterisks indicate statistically significant pairwise contrasts.
       </p>
+    </div>
+  </div>
+</section>
+
+<section class="section references-section">
+  <div class="container is-max-desktop">
+    <p class="section-label">Research context</p>
+    <h2 class="title is-4">Past work and datasets</h2>
+    <div class="columns reference-columns">
+      <div class="column">
+        <h3 class="title is-6">Past work</h3>
+        <a class="reference-link" href="https://www.science.org/doi/10.1126/sciadv.abg3851" target="_blank" rel="noopener">
+          <span><strong>CheXclusion</strong><small>Science Advances</small></span>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+        <a class="reference-link" href="https://www.nature.com/articles/s41591-021-01595-0" target="_blank" rel="noopener">
+          <span><strong>Underdiagnosis bias in chest radiograph AI</strong><small>Nature Medicine</small></span>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="column">
+        <h3 class="title is-6">Datasets</h3>
+        <a class="reference-link" href="https://physionet.org/content/mimic-cxr-jpg/2.1.0/" target="_blank" rel="noopener">
+          <span><strong>MIMIC-CXR-JPG</strong><small>PhysioNet</small></span>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+        <a class="reference-link" href="https://stanfordmlgroup.github.io/competitions/chexpert/" target="_blank" rel="noopener">
+          <span><strong>CheXpert</strong><small>Stanford ML Group</small></span>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+        <a class="reference-link" href="https://huggingface.co/datasets/rajpurkarlab/ReXGradient-160K" target="_blank" rel="noopener">
+          <span><strong>ReXGradient-160K</strong><small>Rajpurkar Lab</small></span>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -188,21 +222,6 @@
           ReXGradient-160K, respectively. ReXGradient-160K has no race plot due to lack of race metadata.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<section class="section pt-0">
-  <div class="container is-max-desktop">
-    <h2 class="title is-4">BibTeX</h2>
-    <pre class="bibtex">@article{pallikondalatheef2026demographic,
-  title   = {Demographic Bias and Encoding in Medical Vision-Language Models},
-  author  = {Pallikonda Latheef, Ammar Ahmed and Woodwal, Paravreet and Kulkarni, Aditya
-             and Luber, Jacob M and Mukherjee, Pritam and Yi, Paul H},
-  journal = {Manuscript under review},
-  year    = {2026}
-}</pre>
   </div>
 </section>
 
