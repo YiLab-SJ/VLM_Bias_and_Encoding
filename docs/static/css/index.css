@@ -55,17 +55,17 @@ body {
 
 .main-figure {
   display: block;
-  width: min(100%, 720px);
+  width: min(100%, 560px);
   height: auto;
   margin-inline: auto;
 }
 
 .main-figure-wide {
-  width: min(100%, 800px);
+  width: min(100%, 620px);
 }
 
 .main-figure-portrait {
-  width: min(100%, 520px);
+  width: min(100%, 400px);
 }
 
 .figure-caption {
@@ -101,11 +101,18 @@ body {
   border-right: 1px solid #ccddd6;
 }
 
+.reference-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .reference-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  width: 100%;
   padding: 0.9rem 0;
   border-bottom: 1px solid #ccddd6;
   color: #164f49;
